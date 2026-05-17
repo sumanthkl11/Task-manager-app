@@ -1,14 +1,14 @@
 package com.sumanth.taskmanager.entity;
 
 import jakarta.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
 public class User {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     private String name;
 
@@ -16,6 +16,9 @@ public class User {
     private String email;
 
     private String password;
+
+    @OneToMany(mappedBy = "user")
+    private List<JobApplication> applications;
 
     public User() {
     }
