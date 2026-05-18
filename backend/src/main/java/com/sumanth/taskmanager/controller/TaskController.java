@@ -6,6 +6,7 @@ import com.sumanth.taskmanager.service.TaskService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import jakarta.validation.Valid;
 
 import java.util.List;
 
@@ -17,7 +18,7 @@ public class TaskController {
     private TaskService taskService;
 
     @PostMapping
-    public String createTask(@RequestBody TaskRequest request) {
+    public String createTask(@Valid @RequestBody TaskRequest request) {
 
         return taskService.createTask(request);
     }

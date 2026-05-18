@@ -6,6 +6,7 @@ import com.sumanth.taskmanager.entity.User;
 import com.sumanth.taskmanager.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.sumanth.taskmanager.exception.UserAlreadyExistsException;
 
 import java.util.Optional;
 
@@ -18,7 +19,7 @@ public class UserService {
     public String register(RegisterRequest request) {
         Optional<User> existingUser = userRepository.findByEmail(request.getEmail());
         if (existingUser.isPresent()) {
-            return "Email already exists";
+            throw new UserAlreadyExistsException("User Already Exists");
         }
         User user = new User();
 

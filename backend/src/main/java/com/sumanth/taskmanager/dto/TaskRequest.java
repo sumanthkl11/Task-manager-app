@@ -1,7 +1,12 @@
 package com.sumanth.taskmanager.dto;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
 public class TaskRequest {
 
+    @NotBlank(message = "Title cannot be Empty")
     private String title;
     private String description;
     private boolean completed;
@@ -25,7 +30,7 @@ public class TaskRequest {
         this.description = description;
     }
 
-    public boolean isCompleted(){
+    public boolean isCompleted() {
         return completed;
     }
 

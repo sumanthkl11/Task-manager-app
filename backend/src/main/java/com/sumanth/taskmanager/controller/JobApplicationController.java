@@ -5,6 +5,7 @@ import com.sumanth.taskmanager.service.JobApplicationService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/applications")
@@ -14,8 +15,7 @@ public class JobApplicationController {
     private JobApplicationService service;
 
     @PostMapping
-    public String addApplication(
-            @RequestBody ApplicationRequest request) {
+    public String addApplication(@Valid @RequestBody ApplicationRequest request) {
 
         return service.addApplication(request);
     }
