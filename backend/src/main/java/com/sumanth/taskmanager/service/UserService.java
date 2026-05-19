@@ -7,6 +7,7 @@ import com.sumanth.taskmanager.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.sumanth.taskmanager.exception.UserAlreadyExistsException;
+import com.sumanth.taskmanager.util.JwtUtil;
 
 import java.util.Optional;
 
@@ -47,6 +48,6 @@ public class UserService {
             return "Invalid Password";
         }
 
-        return "Login Successful";
+        return JwtUtil.generateToken(user.getEmail());
     }
 }
